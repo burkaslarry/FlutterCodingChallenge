@@ -54,8 +54,8 @@ class MyHomePage extends StatelessWidget {
                                     controller: scrollController,
                                     itemCount: 250,
                                     itemBuilder: (_, index) {
-                                      return ListTile(
-                                        title: Text("Item: $index"),
+                                      return CustomListItem(
+                                        index: index,
                                       );
                                     },
                                   ),
