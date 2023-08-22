@@ -40,9 +40,16 @@ class MyHomePage extends StatelessWidget {
                 showModalBottomSheet<void>(
                   context: context,
                   isScrollControlled: true,
+                  useSafeArea: true, // iPhone M top
                   builder: (BuildContext context) {
                     return Padding(
-                        padding: EdgeInsets.all(16.0), // Add padding of 16dp
+                        padding: EdgeInsets.only(
+                          left: 16.0,
+                          top: 16.0,
+                          right: 16.0,
+                          bottom:
+                              MediaQuery.of(context).viewInsets.bottom + 16.0,
+                        ),
                         child: DraggableScrollableSheet(
                           maxChildSize: 0.8,
                           expand: false,
