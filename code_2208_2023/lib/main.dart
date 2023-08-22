@@ -1,0 +1,81 @@
+import 'package:flutter/material.dart';
+import 'draggablebottomsheet.dart';
+
+void main() {
+  runApp(MyApp());
+}
+
+bool showDrag = false;
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Button Project',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text('Draggable Scroll Bar Demo'),
+        ),
+        //DraggableScrollbar builds Stack with provided Scrollable List of Grid
+        body: MyHomePage(),
+      ),
+    );
+  }
+}
+
+class MyHomePage extends StatelessWidget {
+  static const label = "Click Me";
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Stack(
+        children: [
+          Center(
+            child: ElevatedButton(
+              onPressed: () {
+                // Handle button click, show Model Bottom SHeet
+                showModalBottomSheet<void>(
+                  context: context,
+                  builder: (BuildContext context) {
+                    return DraggableScrollableSheet(
+                      expand: false,
+                      builder: (_, ScrollController scrollController) {
+                        return Column(
+                          children: [
+                            Expanded(
+                              child: ListView.builder(
+                                controller: scrollController,
+                                itemCount: 250,
+                                itemBuilder: (_, index) {
+                                  return ListTile(
+                                    title: Text("Item: $index"),
+                                  );
+                                },
+                              ),
+                            ),
+                            ElevatedButton(
+                              onPressed: () {
+                                // Handle button press
+                                // exit bottom scroll
+                                Navigator.pop(context);
+                              },
+                              child: Text('Bottom Button'),
+                            ),
+                          ],
+                        );
+                      },
+                    );
+                  },
+                );
+              },
+              child: Text(label),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
