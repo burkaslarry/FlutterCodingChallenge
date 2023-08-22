@@ -12,7 +12,7 @@ class CustomListItem extends StatelessWidget {
         ListTile(
           title: Text("Item: $index"),
         ),
-        Divider(
+        const Divider(
           color: Colors.grey, // Add a grey line below the ListTile
           height: 1.0,
           thickness: 1.0,
