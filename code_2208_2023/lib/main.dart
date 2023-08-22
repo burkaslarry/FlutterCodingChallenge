@@ -39,10 +39,12 @@ class MyHomePage extends StatelessWidget {
                 // Handle button click, show Model Bottom SHeet
                 showModalBottomSheet<void>(
                   context: context,
+                  isScrollControlled: true,
                   builder: (BuildContext context) {
                     return Padding(
                         padding: EdgeInsets.all(16.0), // Add padding of 16dp
                         child: DraggableScrollableSheet(
+                          maxChildSize: 0.8,
                           expand: false,
                           builder: (_, ScrollController scrollController) {
                             return Column(
