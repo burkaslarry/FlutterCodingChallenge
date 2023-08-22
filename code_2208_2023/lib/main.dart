@@ -48,7 +48,14 @@ class MyHomePage extends StatelessWidget {
                           expand: false,
                           builder: (_, ScrollController scrollController) {
                             return Column(
+                              crossAxisAlignment: CrossAxisAlignment.stretch,
                               children: [
+                                TextField(
+                                  decoration: InputDecoration(
+                                    hintText: 'Enter the Text',
+                                  ),
+                                ),
+                                SizedBox(height: 16.0),
                                 Expanded(
                                   child: ListView.builder(
                                     controller: scrollController,
