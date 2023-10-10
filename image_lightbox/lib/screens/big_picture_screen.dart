@@ -15,6 +15,7 @@ class _BigPictureScreenState extends State<BigPictureScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: backgroundColor.withOpacity(1.0 - floatProgress),
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(kToolbarHeight),
         child: Container(
@@ -38,10 +39,12 @@ class _BigPictureScreenState extends State<BigPictureScreen> {
         key: UniqueKey(),
         direction: DismissDirection.vertical,
         onDismissed: (_) {
+          //image already exit
           Navigator.pop(context);
         },
         onUpdate: (details) => {
           setState(() {
+            //fade out
             floatProgress = 1.0 - details.progress;
           })
         },
