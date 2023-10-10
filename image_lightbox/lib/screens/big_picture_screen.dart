@@ -1,15 +1,38 @@
 import 'package:flutter/material.dart';
 import 'package:image_lightbox/utils/constant.dart';
 
-class BigPictureScreen extends StatelessWidget {
-  final String imagePath;
+class BigPictureScreen extends StatefulWidget {
+  final String imagePath = "";
 
-  BigPictureScreen(this.imagePath); // Receive the image path as a parameter
+  @override
+  State<BigPictureScreen> createState() => _BigPictureScreenState();
+}
 
+class _BigPictureScreenState extends State<BigPictureScreen> {
+  double floatProgress = 0.0;
+  Color backgroundColor = Colors.black;
+  // Receive the image path as a parameter
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: null, // Remove the app bar
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(kToolbarHeight),
+        child: Container(
+          color: backgroundColor.withOpacity(1.0 - floatProgress),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              IconButton(
+                icon: Icon(Icons.close),
+                color: Colors.white,
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+              ),
+            ],
+          ),
+        ),
+      ),
       backgroundColor: Colors.black, // Set black background color
       body: Dismissible(
         key: UniqueKey(),
@@ -17,13 +40,18 @@ class BigPictureScreen extends StatelessWidget {
         onDismissed: (_) {
           Navigator.pop(context);
         },
+        onUpdate: (details) => {
+          setState(() {
+            floatProgress = 1.0 - details.progress;
+          })
+        },
         child: Center(
           child: Hero(
-            tag: 'myHeroTag',
-            child: InteractiveViewer(
-              child: Image.network(catImagePath),
-            ),
-          ),
+              tag: heroAnimationTag,
+              child: InteractiveViewer(
+                child: Image.network(catImagePath),
+              ),
+              transitionOnUserGestures: true),
         ),
       ),
     );

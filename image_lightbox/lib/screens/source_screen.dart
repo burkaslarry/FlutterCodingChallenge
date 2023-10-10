@@ -8,17 +8,30 @@ class SourceScreen extends StatelessWidget {
     return Scaffold(
         body: GestureDetector(
       onTap: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-            fullscreenDialog: true, // Set fullscreenDialog to true
-            builder: (context) => BigPictureScreen(catImagePath),
+        Navigator.of(context).push(
+          PageRouteBuilder(
+            transitionDuration: Duration(milliseconds: transitionDuration),
+            pageBuilder: (BuildContext context, Animation<double> animation,
+                Animation<double> secondaryAnimation) {
+              return BigPictureScreen();
+            },
+            transitionsBuilder: (BuildContext context,
+                Animation<double> animation,
+                Animation<double> secondaryAnimation,
+                Widget child) {
+              return Align(
+                child: FadeTransition(
+                  opacity: animation,
+                  child: child,
+                ),
+              );
+            },
           ),
         );
       },
       child: Center(
         child: Hero(
-          tag: 'myHeroTag',
+          tag: heroAnimationTag,
           child: InteractiveViewer(
             child: Image.network(catImagePath),
           ),
