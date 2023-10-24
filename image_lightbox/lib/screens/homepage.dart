@@ -17,7 +17,7 @@ class HomePage extends StatelessWidget {
             onTap: () {
               Navigator.of(context).push(
                 FadeTransitionRoute(builder: (BuildContext context) {
-                  return SourceScreen(imageUrl: catImagePath, heroTag: heroAnimationTag);
+                  return const SourceScreen(imageUrl: catImagePath, heroTag: heroAnimationTag);
                 }),
               );
             },

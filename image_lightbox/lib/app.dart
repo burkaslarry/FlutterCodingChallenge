@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'screens/homepage.dart';
-import 'package:image_lightbox/utils/constant.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
