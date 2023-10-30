@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'screens/source_screen.dart';
+import 'screens/homepage.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -9,14 +9,15 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Image LightBox',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.orange),
+        useMaterial3: true,
       ),
       home: Scaffold(
         appBar: AppBar(
           title: const Text('Image LightBox Demo'),
         ),
         //DraggableScrollbar builds Stack with provided Scrollable List of Grid
-        body: SourceScreen(),
+        body: const HomePage()
       ),
     );
   }
