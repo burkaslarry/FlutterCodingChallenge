@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'screens/homepage.dart';
+import 'package:image_lightbox/screens/homepage.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
           title: const Text('Image LightBox Demo'),
         ),
         //DraggableScrollbar builds Stack with provided Scrollable List of Grid
-        body: const HomePage()
+        body: const HomePage(),
       ),
     );
   }
