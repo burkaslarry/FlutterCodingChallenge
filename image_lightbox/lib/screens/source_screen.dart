@@ -2,14 +2,12 @@ import 'package:flutter/material.dart';
 
 
 class SourceScreen extends StatefulWidget {
-  final String imageUrl;
-  final String heroTag;
 
   const SourceScreen({
-    super.key,
-    required this.imageUrl,
-    required this.heroTag,
+    required this.imageUrl, required this.heroTag, super.key,
   });
+  final String imageUrl;
+  final String heroTag;
 
   @override
   State<SourceScreen> createState() => _SourceScreen();
